@@ -28,4 +28,4 @@ jobs:
         context: .
         push: true
         # Exemplo: seu/sua-conta-docker/kanban-api:v1.8.0
-        tags: ${{secrets.DOCKER_USERNAME}}anamunaro/kanban-api:${{ github.ref_name}}
+        tags: ${{secrets.DOCKER_USERNAME}}/kanban-api:${{ github.ref_name}}
