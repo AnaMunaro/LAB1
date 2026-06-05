@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/tarefas")
+@RequestMapping("/tarefa")
 public class TarefaController {
 
     @Autowired
@@ -18,7 +18,7 @@ public class TarefaController {
 
     @GetMapping("/version")
     public String getVersion() {
-        return "v1.0.0";
+        return "v1.1.0";
     }
 
     @GetMapping

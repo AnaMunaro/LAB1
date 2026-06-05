@@ -1,0 +1,31 @@
+name: CD - Entrega Continua Docker
+
+on:
+  push:
+    tags:
+      - 'v*,*.*'
+
+jobs:
+  publicar_inagen:
+    name: Build e Push para Docker Hub
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar o Repositório
+      uses: actions/checkout@v4
+
+    #1. Fazendo o Login usando o nosso Cofre (Secrets)
+    - name: Login no Docker Hub
+      uses: docker/login-action@v3
+      with:
+        username: ${{ secrets.DOCKER USERNAME}}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+
+    #2. A Mágica: Constrói a inagen e joga para o Registry com a MESMA tag do Git
+    - name: Build e Push da Imagen
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        push: true
+        # Exemplo: seu/sua-conta-docker/kanban-api:v1.8.0
+        tags: ${{ secrets.DOCKER_USERNAME }}anamunaro/kanban-api:${{ github.ref_name}}
