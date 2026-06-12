@@ -3,7 +3,7 @@ name: CD - Entrega Continua Docker
 on:
   push:
     tags:
-      - 'v*,*.*'
+      - 'v*.*.*'
 
 jobs:
   publicar_inagen:
